@@ -19,7 +19,7 @@ refs.input.addEventListener('input', debounce(onInput, DEBOUNCE_DELAY));
 
 // event functions
 function onInput(event) {
-  const countryQuery = event.target.value;
+  const countryQuery = event.target.valu.trim();
   if (countryQuery) {
     fetchCountries(countryQuery).then(checkCountries).catch(errorEvent);
   } else {
@@ -49,7 +49,10 @@ function errorEvent() {
 }
 
 // functions helpers
-function getCountriesMarkup(acc, { name: { official: name }, flags: { svg: flag } }) {
+function getCountriesMarkup(
+  acc,
+  { name: { official: name }, flags: { svg: flag } }
+) {
   return acc + `<li><img src="${flag}" alt="${name}" /><p>${name}</p></li>`;
 }
 
@@ -96,7 +99,9 @@ function errorMessage() {
 }
 
 function notifyMessage() {
-  Notiflix.Notify.info('Too many matches found. Please enter a more specific name.');
+  Notiflix.Notify.info(
+    'Too many matches found. Please enter a more specific name.'
+  );
 }
 
 function resetAll() {
