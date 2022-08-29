@@ -19,7 +19,7 @@ refs.input.addEventListener('input', debounce(onInput, DEBOUNCE_DELAY));
 
 // event functions
 function onInput(event) {
-  const countryQuery = event.target.valu.trim();
+  const countryQuery = event.target.value.trim();
   if (countryQuery) {
     fetchCountries(countryQuery).then(checkCountries).catch(errorEvent);
   } else {
